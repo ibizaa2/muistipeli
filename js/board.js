@@ -8,11 +8,10 @@ const attemptsdom= document.getElementById("attempts");
 let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
-let attempts = 0;
+export let attempts = 0;
 
 // fisher yates shuffle
 function shuffle(array) {
-    let c;
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
@@ -38,18 +37,12 @@ export function createBoard(cardCount) {
 
 
 
-
-
-
 function handleCardFlip(cardElement) {
     const card = cardElement.currentTarget;
 
     if (card.classList.contains("flipped")) return;
     if (lockBoard) return;
 
-
-
-  
     card.classList.add("flipped");
     card.textContent = card.dataset.card;
 
@@ -63,11 +56,11 @@ function handleCardFlip(cardElement) {
     
     secondCard = card;
     attempts++;
-    attemptsdom.innerHTML = "Yritykset: " + attempts;
+    if(attemptsdom > 0){
+        attemptsdom.innerHTML = "Yritykset: " + attempts;
+        return;
+    }
 
-
-  
-    
     console.log(attempts)
     lockBoard = true;
 
