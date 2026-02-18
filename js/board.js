@@ -4,7 +4,7 @@ const allCards = [
     "🍎","🍐","🍒","🍉","🍇","🍓","🍌","🍍","🥝","🥥","🍑","🍈","🍋","🍊","🍏","🍅"
 ];
 const gameBoard = document.getElementById("game-board");
-const attemptsdom= document.getElementById("attempts");
+
 let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
@@ -56,10 +56,7 @@ function handleCardFlip(cardElement) {
     
     secondCard = card;
     attempts++;
-    if(attemptsdom > 0){
-        attemptsdom.innerHTML = "Yritykset: " + attempts;
-        return;
-    }
+ 
 
     console.log(attempts)
     lockBoard = true;
@@ -69,7 +66,7 @@ function handleCardFlip(cardElement) {
 }
 
 export function resetAttempts(){
-    attemptsdom.innerHTML = "";
+   
     attempts = 0;
 }
 
